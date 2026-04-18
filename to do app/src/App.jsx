@@ -1,28 +1,37 @@
-import { useState } from 'react'
-import Header from "./component/Header"
-import Todoinput from "./component/Todoinput"
-import TodoList from './component/TodoList'
+import { useState } from "react";
+import Header from "./component/Header";
+import Todoinput from "./component/Todoinput";
+import TodoItem from "./component/TodoItem";
+import "./App.css";
 
 function App() {
-  const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState([]);
 
-  const handleAddTodo = (newTodo) => {
-    setTodos([...todos, newTodo])
-  }
+    const addTodo = (todo) => {
+        setTodos([...todos, todo]);
+    };
 
-  const handleDeleteTodo = (index) => {
-    const newTodos = todos.filter((_, i) => i !== index)
-    setTodos(newTodos)
-  }
+    const deleteTodo = (todoToDelete) => {
+        setTodos(todos.filter(todo => todo !== todoToDelete));
+    };
 
-  return (
-    <>
-      <Header />
-      <Todoinput onAddTodo={handleAddTodo} />
-      <TodoList todos={todos} onDeleteTodo={handleDeleteTodo} />
-    </>
-    
-  )
+    return (
+        <div className="app">
+            <Header />
+            <main className="app-main">
+                <Todoinput addTodo={addTodo} />
+                <div className="todo-list">
+                    {todos.map((todo, index) => (
+                        <TodoItem
+                            key={index}
+                            todo={todo}
+                            deleteTodo={deleteTodo}
+                        />
+                    ))}
+                </div>
+            </main>
+        </div>
+    );
 }
 
-export default App
+export default App;

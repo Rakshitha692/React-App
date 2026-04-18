@@ -1,13 +1,13 @@
 import React from "react";
+import "./TodoItem.css";
 
 function TodoItem({ todo, deleteTodo }) {
     return (
-        <div>
-            <p>{todo}</p>
-            <button onClick={() => deleteTodo(todo)}>Delete</button>
+        <div className="todo-item">
+            <p className="todo-text">{todo}</p>
+            <button className="delete-btn" onClick={() => deleteTodo(todo)}>Delete</button>
         </div>
-    )
-
+    );
 }
 
-export default TodoItem
+export default TodoItem;

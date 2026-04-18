@@ -6,14 +6,20 @@ function Todoinput({addTodo}) {
         if (todo.trim() !== "") {
             addTodo(todo)
             setTodo("")
-        }   
+        }
     }
     return (
-        <div> 
-            <input type="text" placeholder="Enter your todo" value={todo} onChange={(e) => setTodo(e.target.value)} />
-            <button onClick={handleChange}>Add Todo</button>
+        <div className="todo-input-container">
+            <input
+                type="text"
+                placeholder="Enter your todo"
+                value={todo}
+                onChange={(e) => setTodo(e.target.value)}
+                className="todo-input"
+            />
+            <button onClick={handleChange} className="add-todo-btn">Add Todo</button>
         </div>
-        
+
     )
 }
 
