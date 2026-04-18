@@ -1,7 +1,7 @@
 function Header() {
     return (
-        <header>
-            <h1> My To Do App</h1>
+        <header className="app-header">
+            <h1 className="app-title">My To Do App</h1>
         </header>
     )
 }
